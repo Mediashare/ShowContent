@@ -39,24 +39,24 @@ Class Render {
     }
 
     private function image(): string {
-        $template = $this->twig->load('image.html.twig');
+        $template = $this->twig->load('_image.html.twig');
         return $template->render(
             ['file' => $this->file]
         );
     }
     private function video() {
-        $template = $this->twig->load('video.html.twig');
+        $template = $this->twig->load('_video.html.twig');
         return $template->render(
             ['file' => $this->file]
         );
     }
     private function text() {
         if ($this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
-            $template = $this->twig->load('markdown.html.twig');
+            $template = $this->twig->load('_markdown.html.twig');
             $markdown = new Parsedown();
             $this->file->content = $markdown->text($this->file->getContent());
         else:
-            $template = $this->twig->load('text.html.twig');
+            $template = $this->twig->load('_text.html.twig');
             $this->file->content = preg_replace("/\r\n|\r|\n/", '<br/>', $this->file->getContent());
         endif;
         return $template->render(
@@ -64,7 +64,7 @@ Class Render {
         );
     }
     private function audio() {
-        $template = $this->twig->load('audio.html.twig');
+        $template = $this->twig->load('_audio.html.twig');
         return $template->render(
             ['file' => $this->file]
         );
@@ -76,7 +76,7 @@ Class Render {
         return $this->error('Application file is not supported. [Path: '.$this->file->path.' | MimeType: '.$this->file->getMimeType().']');
     }
     private function error(string $message) {
-        $template = $this->twig->load('error.html.twig');
+        $template = $this->twig->load('_error.html.twig');
         return $template->render(
             ['error' => $message]
         );

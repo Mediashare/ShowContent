@@ -7,11 +7,18 @@ Debugger::enable();
 
 use Mediashare\ShowContent\ShowContent;
 
-// $file = "files/image.png";
-// $file = "files/video.webm";
-// $file = "files/audio.mp3";
-// $file = "files/text.txt";
-// $file = "files/text.md";
-$file = "files/font.otf";
+$file = "files/image.png";
+$showContent = new ShowContent($file);
+$showContent->show();
+$file = "files/video.webm";
+$showContent = new ShowContent($file);
+$showContent->show();
+$file = "files/audio.mp3";
+$showContent = new ShowContent($file);
+$showContent->show();
+$file = "files/text.txt";
+$showContent = new ShowContent($file);
+$showContent->show();
+$file = "files/text.md";
 $showContent = new ShowContent($file);
 $showContent->show();
