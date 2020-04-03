@@ -1,5 +1,6 @@
 {
     "name": "mediashare/show-content",
+    "description": "Detect file type & generate html view for web interface user-friendly. (Image/Video/Audio/Text/Markdown)",
     "type": "library",
     "require-dev": {
         "tracy/tracy": "^2.7"
