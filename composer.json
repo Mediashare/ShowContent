@@ -1,0 +1,15 @@
+{
+    "name": "mediashare/show-content",
+    "type": "library",
+    "require-dev": {
+        "tracy/tracy": "^2.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thibault Marquand - Mediashare",
+            "email": "mediashare.supp@gmail.com"
+        }
+    ],
+    "require": {}
+}
