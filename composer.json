@@ -11,5 +11,13 @@
             "email": "mediashare.supp@gmail.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Mediashare\\ShowContent\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0",
+        "erusev/parsedown": "^1.7"
+    }
 }

@@ -1,0 +1,8 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <audio controls>
+        <source src="{{ file.path }}" type="{{ file.mimeType }}">
+        Your browser does not support the audio element.
+    </audio>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block css %}
+    <link href="assets/css/markdown.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/prism.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <div class="markdown-body">
+        {{ file.content|raw }}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="assets/js/prism.js" type="text/javascript"></script>
+{% endblock %}
