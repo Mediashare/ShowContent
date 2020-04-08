@@ -18,7 +18,7 @@ Class Render {
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../templates');
         $this->twig = new \Twig\Environment($loader, [
             'cache' => 'var/cache',
-            'debug' => true
+            // 'debug' => true
         ]);
     }
 
