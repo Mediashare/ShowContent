@@ -38,7 +38,7 @@ Class File {
         return $this->type;
     }
     public function getExtension() {
-        $this->extension = pathinfo($this->path)['extension'];
+        $this->extension = pathinfo($this->path, PATHINFO_EXTENSION);
         return $this->extension;
     }
 }
