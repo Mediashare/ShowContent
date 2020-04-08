@@ -8,7 +8,7 @@ Detect file type & generate html view for web interface user-friendly.
 - Markdown
 ## Installation
 ```bash
-composer install mediashare/show-content
+composer require mediashare/show-content
 ```
 ## Usages
 ```php
