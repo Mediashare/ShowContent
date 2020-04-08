@@ -62,11 +62,11 @@ Class Render {
         return $template->render([
             'file' => $this->file,
             'css' => [
-                \file_get_contents("assets/css/markdown.css"),
-                \file_get_contents("assets/css/prism.css")
+                \file_get_contents(__DIR__."/../../assets/css/markdown.css"),
+                \file_get_contents(__DIR__."/../../assets/css/prism.css")
             ],
             'javascripts' => [
-                \file_get_contents("assets/js/prism.js")
+                \file_get_contents(__DIR__."/../../assets/js/prism.js")
             ]
         ]);
     }
