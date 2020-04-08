@@ -15,7 +15,9 @@ Class File {
         return $this->content;
     }
     public function getMimeType() {
-        $this->mimeType = mime_content_type($this->path);
+        $file_info = new \finfo(FILEINFO_MIME_TYPE);
+        $mime_type = $file_info->buffer($this->getContent());
+        $this->mimeType = $mime_type;
         return $this->mimeType;
     }
     public function getType() {
