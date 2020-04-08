@@ -18,7 +18,7 @@ Class Render {
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../templates');
         $this->twig = new \Twig\Environment($loader, [
             'cache' => 'var/cache',
-            // 'debug' => true
+            'debug' => true
         ]);
     }
 
@@ -51,7 +51,7 @@ Class Render {
         );
     }
     private function text() {
-        if ($this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
+        if (true || $this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
             $template = $this->twig->load('_markdown.html.twig');
             $markdown = new Parsedown();
             $this->file->content = $markdown->text($this->file->getContent());
@@ -59,9 +59,16 @@ Class Render {
             $template = $this->twig->load('_text.html.twig');
             $this->file->content = preg_replace("/\r\n|\r|\n/", '<br/>', $this->file->getContent());
         endif;
-        return $template->render(
-            ['file' => $this->file]
-        );
+        return $template->render([
+            'file' => $this->file,
+            'css' => [
+                \file_get_contents("assets/css/markdown.css"),
+                \file_get_contents("assets/css/prism.css")
+            ],
+            'javascripts' => [
+                \file_get_contents("assets/js/prism.js")
+            ]
+        ]);
     }
     private function audio() {
         $template = $this->twig->load('_audio.html.twig');
