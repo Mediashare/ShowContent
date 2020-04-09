@@ -51,7 +51,7 @@ Class Render {
         );
     }
     private function text() {
-        if (true || $this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
+        if ($this->file->getMimeType() === 'text/plain' || $this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
             $template = $this->twig->load('_markdown.html.twig');
             $markdown = new Parsedown();
             $this->file->content = $markdown->text($this->file->getContent());
