@@ -13,11 +13,11 @@ use Mediashare\ShowContent\Utils\File;
 Class Render {
     private $file;
     private $twig;
-    public function __construct(File $file) {
+    public function __construct(File $file, string $templates, ?string $cache = null) {
         $this->file = $file;
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../templates');
+        $loader = new \Twig\Loader\FilesystemLoader($templates);
         $this->twig = new \Twig\Environment($loader, [
-            'cache' => 'var/cache',
+            'cache' => $cache,
             // 'debug' => true
         ]);
     }
