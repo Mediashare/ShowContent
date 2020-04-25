@@ -16,10 +16,10 @@ Class Render {
     public function __construct(File $file, string $templates, ?string $cache = null) {
         $this->file = $file;
         $loader = new \Twig\Loader\FilesystemLoader($templates);
-        $this->twig = new \Twig\Environment($loader, [
-            'cache' => $cache,
-            // 'debug' => true
-        ]);
+        if ($cache):
+            $options = ['cache' => $cache,];
+        endif;
+        $this->twig = new \Twig\Environment($loader, $options ?? []);
     }
 
     public function show() { 
