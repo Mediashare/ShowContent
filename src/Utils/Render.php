@@ -46,9 +46,11 @@ Class Render {
     }
     private function video() {
         $template = $this->twig->load('_video.html.twig');
-        return $template->render(
-            ['file' => $this->file]
-        );
+        return $template->render([
+            'file' => $this->file,
+            'css' => [\file_get_contents("https://cdn.plyr.io/3.5.10/plyr.css")],
+            'javascripts' => [\file_get_contents("https://cdn.plyr.io/3.5.10/plyr.js")],
+        ]);
     }
     private function text() {
         if ($this->file->getMimeType() === 'text/plain' || $this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
