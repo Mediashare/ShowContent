@@ -1,14 +1,5 @@
 {% extends "base.html.twig" %}
 
-{% block css %}
-    <style>
-        #iframe {
-            min-height: 50vh;
-        }
-    </style>
-{% endblock %}
-
 {% block content %}
-    <iframe id="iframe" src="{{ file.path }}" frameborder="0" width="100%" height="100%"></iframe>
+    {{ file.content|raw }}
 {% endblock %}
-
