@@ -3,7 +3,6 @@ namespace Mediashare\ShowContent\Utils;
 
 Class File {
     public $path;
-    public $header;
     public $content;
     public $mimeType;
     public $type;
@@ -13,18 +12,7 @@ Class File {
     }
     public function getContent() {
         if (!$this->content):
-            if ($this->header):
-                $opts = [
-                    "http" => [
-                        "method" => "GET",
-                        "header" => $this->header
-                    ]
-                ];
-                $context = stream_context_create($opts);
-                $this->content = file_get_contents($this->path, false, $context);
-            else:
-                $this->content = file_get_contents($this->path);
-            endif;
+            $this->content = file_get_contents($this->path);
         endif;
         return $this->content;
     }
