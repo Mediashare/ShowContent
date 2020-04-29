@@ -1,15 +1,4 @@
 {% extends "base.html.twig" %}
-
-{% block css %}
-    <style>
-        #text-content {
-            margin: 1rem;
-        }
-    </style>
-{% endblock %}
-
 {% block content %}
-    <div id="text-content">
-        {{ file.content|raw }}
-    </div>
+    <pre id="text-content">{{ file.content|raw }}</pre>
 {% endblock %}

@@ -51,13 +51,13 @@ Class Render {
         );
     }
     private function text() {
-        if ($this->file->getMimeType() === 'text/plain' || $this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
+        if ($this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
             $template = $this->twig->load('_markdown.html.twig');
             $markdown = new Parsedown();
             $this->file->content = $markdown->text($this->file->getContent());
         else:
             $template = $this->twig->load('_text.html.twig');
-            $this->file->content = preg_replace("/\r\n|\r|\n/", '<br/>', $this->file->getContent());
+            $this->file->content = $this->file->getContent();
         endif;
         return $template->render([
             'file' => $this->file,
