@@ -99,10 +99,17 @@ Class Render {
         );
     }
     private function font() {
-        return $this->error('Font file is not supported. [Path: '.$this->file->path.' | MimeType: '.$this->file->getMimeType().']');
+        return $this->download('Font file is not supported. [Path: '.$this->file->path.' | MimeType: '.$this->file->getMimeType().']');
     }
     private function application() {
-        return $this->error('Application file is not supported. [Path: '.$this->file->path.' | MimeType: '.$this->file->getMimeType().']');
+        return $this->download('Application file is not supported. [Path: '.$this->file->path.' | MimeType: '.$this->file->getMimeType().']');
+    }
+    private function download(?string $message = null) {
+        $template = $this->twig->load('_download.html.twig');
+        return $template->render([
+            'file' => $this->file,
+            'message' => $message
+        ]);
     }
     private function error(string $message) {
         $template = $this->twig->load('_error.html.twig');
