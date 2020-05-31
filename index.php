@@ -16,7 +16,7 @@ use Mediashare\ShowContent\ShowContent;
 // $file = "files/audio.mp3";
 // $showContent = new ShowContent($file);
 // $showContent->show();
-$file = "files/text.txt";
+$file = "files/code.php";
 $showContent = new ShowContent($file);
 $showContent->show();
 // $file = "files/text.md";

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block css %}
+    {% for content in css %}
+        <style>{{ content|raw }}</style>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <textarea id="code-content">{{ file.content|raw }}</textarea>
+{% endblock %}
+
+{% block javascript %}
+    {% for content in javascripts %}
+        <script>{{ content|raw }}</script>
+    {% endfor %}
+    <script>
+        var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('code-content'), {
+            readOnly: true,
+        });
+    </script>
+{% endblock %}

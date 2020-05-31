@@ -52,23 +52,45 @@ Class Render {
     }
     private function text() {
         if ($this->file->getMimeType() === 'text/markdown' || $this->file->getExtension() === 'md'):
-            $template = $this->twig->load('_markdown.html.twig');
             $markdown = new Parsedown();
             $this->file->content = $markdown->text($this->file->getContent());
-        else:
-            $template = $this->twig->load('_text.html.twig');
+            $template = $this->twig->load('_markdown.html.twig');
+            return $template->render([
+                'file' => $this->file,
+                'css' => [
+                    \file_get_contents(__DIR__."/../../assets/css/markdown.css"),
+                    \file_get_contents(__DIR__."/../../assets/css/prism.css")
+                ],
+                'javascripts' => [
+                    \file_get_contents(__DIR__."/../../assets/js/prism.js")
+                ]
+            ]);
+        elseif ($this->file->getMimeType() !== 'text/plain' && $this->file->getExtension() !== '.txt'):
             $this->file->content = $this->file->getContent();
+            $template = $this->twig->load('_code.html.twig');
+            return $template->render([
+                'file' => $this->file,
+                'css' => [
+                    \file_get_contents(__DIR__."/../../assets/codemirror/lib/codemirror.css"),
+                ],
+                'javascripts' => [
+                    \file_get_contents(__DIR__."/../../assets/codemirror/lib/codemirror.js"),
+                ]
+            ]);
+        else:
+            $this->file->content = $this->file->getContent();
+            $template = $this->twig->load('_text.html.twig');
+            return $template->render([
+                'file' => $this->file,
+                'css' => [
+                    \file_get_contents(__DIR__."/../../assets/css/markdown.css"),
+                    \file_get_contents(__DIR__."/../../assets/css/prism.css")
+                ],
+                'javascripts' => [
+                    \file_get_contents(__DIR__."/../../assets/js/prism.js")
+                ]
+            ]);
         endif;
-        return $template->render([
-            'file' => $this->file,
-            'css' => [
-                \file_get_contents(__DIR__."/../../assets/css/markdown.css"),
-                \file_get_contents(__DIR__."/../../assets/css/prism.css")
-            ],
-            'javascripts' => [
-                \file_get_contents(__DIR__."/../../assets/js/prism.js")
-            ]
-        ]);
     }
     private function audio() {
         $template = $this->twig->load('_audio.html.twig');
