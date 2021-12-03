@@ -1,6 +1,4 @@
 # ShowContent
-**[DEPRECATED] Go to [Gitlab Project](https://gitlab.marquand.pro/MarquandT/show-content)**
-
 Detect file type & generate html view for web interface user-friendly.
 ## File Types Supported
 - Image
